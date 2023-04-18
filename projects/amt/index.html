@@ -43,7 +43,6 @@
   <script src="./static/js/index.js"></script>
 </head>
 <body>
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
@@ -149,11 +148,11 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop height="100%">
-        <source src="static/images/moment.mp4"
+        <source src="static/videos/demo_0049.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">AMT</span> turns near-duplicate photos into a slow motion footage that look like shot with a video camera.
+        <span class="dnerf">AMT</span> is a lightweight, fast, and accurate algorithm for Frame Interpolation, aiming to provide practical solutions for video generation from given frames.
       </h2>
     </div>
   </div>
@@ -165,56 +164,38 @@
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop height="100%">
-            <source src="static/images/000661/interpolated-2s.mp4"
+          <video poster="" id="steve" autoplay controls muted loop height="100%" playbackRate="0.1">
+            <source src="static/videos/demo_0014.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" autoplay controls muted loop height="100%">
-            <source src="static/images/000357/interpolated-2s.mp4"
+            <source src="static/videos/demo_0023.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" autoplay controls muted loop height="100%">
-            <source src="static/images/000628/interpolated-2s.mp4"
+            <source src="static/videos/demo_0049.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" autoplay controls muted loop height="100%">
-            <source src="static/images/000204/interpolated-2s.mp4"
+            <source src="static/videos/demo_0066.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-blueshirt">
           <video poster="" id="blueshirt" autoplay controls muted loop height="100%">
-            <source src="static/images/000194/interpolated-2s.mp4"
+            <source src="static/videos/demo_0073.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-mask">
           <video poster="" id="mask" autoplay controls muted loop height="100%">
-            <source src="static/images/000275/interpolated-2s.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop height="100%">
-            <source src="static/images/000027/interpolated-2s.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop height="100%">
-            <source src="static/images/000032/interpolated-2s.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop height="100%">
-            <source src="static/images/000654/interpolated-2s.mp4"
+            <source src="static/videos/demo_0077.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -257,7 +238,22 @@
   <div class="container">
     <div align="center" style="margin-top:20px;" style="margin-bottom:120px;">
       <h2 class="title is-3">Architecture Overview</h2>
-      <img style='height: auto; width: 80%; object-fit: contain' src="static/assets/overview.png" alt="overview_image">
+      <img style='height: auto; width: 75%; object-fit: contain' src="static/assets/overview.png" alt="overview_image">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-two-thirds">
+      <div class="content has-text-justified">
+        <p>
+          <font size="5">
+            Architecture overview of the proposed AMT. 
+            Firstly, the input frames are sent to the correlation encoder to extract features, which are used to construct bidirectional correlation volumes.
+            Then, the context encoder extracts pyramid features of visible frames and generates initial bilateral flows and interpolated intermediate feature.
+            Next, we use bilateral flows to retrieve bidirectional correlations for jointly updating flow fields and the intermediate feature at each level.
+            Finally, we generate multiple groups of flow fields, occlusion masks, and residuals based on the coarse estimate for interpolating the intermediate frame.
+          </font>
+        </p>
+      </div>
+      </div>
+    </div>
     </div> 
   </div>
 </section>
@@ -267,9 +263,9 @@
   <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2">Video</h2>
+        <h2 class="title is-2">Video (TBD)</h2>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/VRJSfc02dzU"
+          <iframe src=""
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
@@ -297,12 +293,6 @@
         For technical questions, please contact <strong>zhenli1031[AT]gmail.com</strong> and <strong>nkuzhuzl[AT]gmail.com</strong>.
         For commercial licensing, please contact <strong>cmm[AT]nankai.edu.cn</strong>.
     </p>
-    <h3 class="title">License</h3>
-    <p class="section-content-text">
-        This code is licensed under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International</a> 
-        for non-commercial use only. 
-        Please note that any commercial use of this code requires formal permission prior to use.
-    </p>
     <h3 class="title">Acknowledgements</h3>
     <p class="section-content-text">
         This work is funded by the National Key Research and Development Program of China (NO.2018AAA0100400), 
@@ -320,7 +310,7 @@
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/MCG-NKU/AMT" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -333,7 +323,7 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            The template is borrow from 
+            The template is borrowed from 
             <a href="https://github.com/nerfies/nerfies.github.io">nerfies.github.io</a>.
           </p>
         </div>
