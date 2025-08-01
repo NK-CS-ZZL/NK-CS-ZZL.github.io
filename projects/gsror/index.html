@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="test">
-  <meta name="keywords" content="Relighting, Gaussian Splatting">
+  <meta name="keywords" content="Relighting, Reconstruction, Gaussian Splatting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Discretized SDF</title>
+  <title>GS-ROR</title>
 
   <script>
     function showGif(type) {
@@ -47,16 +47,16 @@
           <br>
 
           <h1 class="title is-3 publication-title"> 
-            Gaussian Splatting with Discretized SDF for Relightable Assets
+            GS-ROR<sup>2</sup>: Bidirectional-guided 3DGS and SDF for Reflective Object Relighting and Reconstruction
           </h1>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://nk-cs-zzl.github.io/" target="_blank">Zuo-Liang Zhu</a><sup>1</sup>,&nbsp;&nbsp;</span>
+              <span class="author-block">
+                <a href="https://wangningbei.github.io/" target="_blank">Beibei Wang</a><sup>2†</sup>,&nbsp;&nbsp;</span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=6CIDtZQAAAAJ" target="_blank">Jian Yang</a><sup>1†</sup>,&nbsp;&nbsp;</span>
-            <span class="author-block">
-              <a href="https://wangningbei.github.io/" target="_blank">Beibei Wang</a><sup>2†</sup>,&nbsp;&nbsp;</span>
           </div>
 
           <div class="publication-authors">
@@ -67,7 +67,7 @@
           </div>
 
           <div class="is-size-5">
-          <span class="author-block">ICCV 2025</span>
+          <span class="author-block">ACM TOG 2025</span>
         </div>
 
           <div class="column has-text-centered">
@@ -84,7 +84,7 @@
               </span> -->
               <!-- arXiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.15629" target="_blank"
+                <a href="https://arxiv.org/abs/2406.18544" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -95,12 +95,12 @@
 
               <!-- Code Link. -->
               <span class="link-block"> 
-                <a href="https://github.com/NK-CS-ZZL/DiscretizedSDF" target="_blank"
+                <a href="https://github.com/NK-CS-ZZL/GSROR" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (TBD)</span>
                   </a>
               </span>
 
@@ -142,62 +142,38 @@
 
         <div class="item">
           <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
-            <div class="desc">Horse</div>
-            <div class="image">
-              <img src="assets/images/horse_corridor.gif" />
-            </div>
-            <div class="image">
-              <img src="./assets/images/horse_golf.gif" />
-            </div>
-          </div>
-        </div>
-
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
-            <div class="desc">Cat</div>
-            <div class="image">
-              <img src="assets/images/cat_neon.gif" />
-            </div>
-            <div class="image">
-              <img src="assets/images/cat_golf.gif" />
-            </div>
-          </div>
-        </div>
-
-        
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
             <div class="desc">Angel</div>
             <div class="image">
-              <img src="assets/images/angel_neon.gif" />
+              <img src="assets/images/angel_relit.gif" />
             </div>
             <div class="image">
-              <img src="assets/images/angel_corridor.gif" />
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
-            <div class="desc">Luyu</div>
-            <div class="image">
-              <img src="assets/images/luyu_corridor.gif" />
-            </div>
-            <div class="image">
-              <img src="assets/images/luyu_golf.gif" />
+              <img src="./assets/images/angel_mesh.gif" />
             </div>
           </div>
         </div>
 
+        
         <div class="item">
           <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
-            <div class="desc">Potion</div>
+            <div class="desc">Bell</div>
             <div class="image">
-              <img src="assets/images/potion_neon.gif" />
+              <img src="assets/images/bell_relit.gif" />
             </div>
             <div class="image">
-              <img src="assets/images/potion_golf.gif" />
+              <img src="assets/images/bell_mesh.gif" />
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
+            <div class="desc">Horse</div>
+            <div class="image">
+              <img src="assets/images/horse_relit.gif" />
+            </div>
+            <div class="image">
+              <img src="assets/images/horse_mesh.gif" />
             </div>
           </div>
         </div>
@@ -206,13 +182,26 @@
           <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
             <div class="desc">Tbell</div>
             <div class="image">
-              <img src="assets/images/tbell_corridor.gif" />
+              <img src="assets/images/tbell_relit.gif" />
             </div>
             <div class="image">
-              <img src="assets/images/tbell_golf.gif" />
+              <img src="assets/images/tbell_mesh.gif" />
             </div>
           </div>
         </div>
+
+        <div class="item">
+          <div class="twentytwenty-container" data-orientation="horizontal" ratio="1">
+            <div class="desc">Toaster</div>
+            <div class="image">
+              <img src="assets/images/toaster_relit.gif" />
+            </div>
+            <div class="image">
+              <img src="assets/images/toaster_mesh.gif" />
+            </div>
+          </div>
+        </div>
+
 
       </div>
   </div>
@@ -228,16 +217,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            3D Gaussian splatting (3DGS) has shown its detailed expressive ability and highly efficient rendering speed in the novel view synthesis (NVS) task. 
-            The application to inverse rendering still faces several challenges, as the discrete nature of Gaussian primitives makes it difficult to apply geometry constraints. 
-            Recent works introduce the signed distance field (SDF) as an extra continuous representation to regularize the geometry defined by Gaussian primitives. 
-            It improves the decomposition quality, at the cost of increasing memory usage and complicating training. 
-            Unlike these works, we introduce a <b>discretized SDF</b> to represent the continuous SDF in a discrete manner by encoding it within each Gaussian using a sampled value. 
-            This approach allows us to link the SDF with the Gaussian opacity through an SDF-to-opacity transformation, 
-            enabling rendering the SDF via splatting and avoiding the computational cost of ray marching.
-            The key challenge is to regularize the discrete samples to be consistent with the underlying SDF, as the discrete representation can hardly apply the gradient-based constraints (e.g., Eikonal loss). 
-            For this, we <b>project Gaussians onto the zero-level set of SDF and enforce alignment with the surface from splatting</b>, namely a projection-based consistency loss. 
-            Thanks to the discretized SDF, our method achieves higher relighting quality, while requiring no extra memory beyond GS and avoiding complex manually designed optimization. 
+            3D Gaussian Splatting (3DGS) has shown a powerful capability for novel view synthesis due to its detailed expressive ability and highly efficient rendering speed. 
+            Unfortunately, creating relightable 3D assets and reconstructing faithful geometry with 3DGS is still problematic, particularly for reflective objects, as its discontinuous representation raises difficulties in constraining geometries. 
+            Volumetric signed distance field (SDF) methods provide robust geometry reconstruction, while the expensive ray marching hinders its real-time application and slows the training. Besides, these methods struggle to capture sharp geometric details. 
+            To this end, we propose to <b>guide 3DGS and SDF bidirectionally in a complementary manner</b>, including an SDF-aided Gaussian splatting for efficient optimization of the relighting model and a GS-guided SDF enhancement for high-quality geometry reconstruction. 
+            At the core of our SDF-aided Gaussian splatting is the mutual supervision of the depth and normal between blended Gaussians and SDF, which <b>avoids the expensive volume rendering</b> of SDF. Thanks to this mutual supervision, the learned blended Gaussians are well-constrained with a minimal time cost. 
+            As the Gaussians are rendered in a deferred shading mode, the alpha-blended Gaussians are smooth, while individual Gaussians may still be outliers, yielding floater artifacts. Therefore, we introduce an <b>SDF-aware pruning strategy to remove Gaussian outliers</b> located distant from the surface defined by SDF, avoiding floater issue. 
+            This way, our GS framework provides reasonable normal and achieves realistic relighting, while the mesh from depth is still problematic. Therefore, we design a <b></b>GS-guided SDF refinement</b>, which utilizes the blended normal from Gaussians to finetune SDF. 
+            With this enhancement, our method can further provide <b>high-quality meshes</b> for reflective objects at the cost of 17% extra training time.
           </p>
         </div>
       </div>
@@ -252,16 +239,27 @@
     <div class="columns is-centered has-text-centered">
       <!-- <div class="column is-four-fifths"> -->
       <div class="column">
-        <h2 class="title is-3">Discretized SDF Pipeline</h2>
+        <h2 class="title is-3">GS-ROR<sup>2</sup> Pipeline</h2>
         <hr>
         <div class="content has-text-justified">
           <p>
-            Our model <b>discretizes the underlying continuous SDF into discrete samples</b> and encodes the SDF values of samples on Gaussian primitives.
-               We propose the median loss to facilitate convergence and projection-based consistency loss to regularize the discrete values of SDF samples. 
-            Besides, we design a spherical initialization for foreground objects to avoid local minima.
+            Our proposed method includes two geometry representations (i.e., Gaussian primitive and TensoSDF). 
+            In the deferred Gaussian pipeline, the shading parameters, normal and depth are projected to the image plane and alpha blended. 
+            The depth and normal from TensoSDF and the blended Gaussians are <b></b>supervised mutually</b>. 
+            Note no color network is used in the SDF part, and <b>only the geometry attributes</b> are volume rendered.
           </p>
-          <div class="column">
+          <div class="column" width="100%">
             <img src="./assets/images/overview.png" />
+          </div>
+          However, the blended Gaussians may still contain outliers, which are removed by the <b>SDF-aware pruning strategy</b>. 
+          The defined narrowing threshold is adjusted automatically around the zero-level set, ensuring all Gaussians are near the surface.
+          <div class="column" style="text-align: center;">
+            <img src="./assets/images/pruning.png" width="80%"/>
+          </div>
+          Due to the inconsistency between the normal and depth from blended Gaussians, the meshes of TSDF fusion from depth can be problematic. 
+          Therefore, we propose the <b>GS-guided SDF enhancement</b>, which utilizes the normal from well-optimized Gaussians to enable extracting high-quality meshes from TensoSDF.
+          <div class="column" style="text-align: center;">
+            <img src="./assets/images/ft.png" width="80%"/>
           </div>
         </div>
       </div>
@@ -282,6 +280,9 @@
           <div class="column">
             <img src="./assets/images/decomposition.png" />
           </div>
+          <div class="column">
+            <img src="./assets/images/mesh.png" />
+          </div>
           <hr>
           <h3 class="title is-4">TensoIR Dataset</h3>
           <div class="column">
@@ -301,9 +302,9 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@InProceedings{zhu2025discretizedsdf,
-      title     = {Gaussian Splatting with Discretized SDF for Relightable Assets},
-      author    = {Zhu, Zuo-Liang and Yang, Jian and Wang, Beibei},
-      booktitle = {Proceedings of IEEE International Conference on Computer Vision (ICCV)},
+      title     = {GS-ROR^2: Bidirectional-guided 3DGS and SDF for Reflective Object Relighting and Reconstruction},
+      author    = {Zhu, Zuo-Liang and Wang, Beibei and Yang, Jian},
+      booktitle = {ACM Transactions on Graphics (TOG)},
       year      = {2025}
     }</code></pre>
   </div>
