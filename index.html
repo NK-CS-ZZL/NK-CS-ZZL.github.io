@@ -72,6 +72,55 @@
     </script>
   
 
+
+  <style>
+    .section-tabs {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 12px 0;
+      margin: 0 10%;
+      justify-content: center;
+      gap: 8px;
+    }
+    .content-wrapper.showing .section-tabs {
+      display: flex;
+    }
+    .section-tabs .tab-btn {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-family: "Roboto Slab", serif;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .section-tabs .tab-btn:hover {
+      background: #e8e8e8;
+      color: #333;
+    }
+    .section-tabs .tab-btn.active {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+    @media (max-width: 960px) {
+      .section-tabs {
+        margin: 0 5%;
+        gap: 4px;
+      }
+      .section-tabs .tab-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 
 
@@ -148,7 +197,12 @@
 </header>
 
 <div class="content-wrapper project">
-  <div class="content-wrapper__inner">
+  <div class="section-tabs">
+    <button class="tab-btn active" data-target="selected-pubs">Selected Pubs</button>
+    <button class="tab-btn" data-target="contributions">Contributions</button>
+    <button class="tab-btn" data-target="co-authors">Co-authors</button>
+  </div>
+  <div class="content-wrapper__inner" id="selected-pubs">
   <h2>Selected Pubs</h2>
   <ul class="timeline">
       <li class="timeline-inverted">
@@ -239,6 +293,30 @@
       </li>
       <li class="timeline-inverted">
         <div class="timeline-image">
+          <img class="img-me" src="images/wdiff.png" alt="">
+        </div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4><a href="https://arxiv.org/abs/2508.06982" target="_blank">WeatherDiffusion: Weather-Guided Diffusion Model for Forward and Inverse Rendering</a></h4>
+          </div>
+          <div class="timeline-body">
+            <div>
+              Yixin Zhu, <strong>Zuo-Liang Zhu</strong>, Miloš Hašan, Jian Yang<sup>†</sup>, Jin Xie, Beibei Wang<sup>†</sup>
+            </div>
+            <div>
+              Computer Vision and Pattern Recognition (CVPR) <strong>Highlight</strong>, 2023
+            </div>
+            <div style="margin-top: 10px;">
+            </div>
+            <div style="margin-top: 10px;">
+              <a href="https://arxiv.org/abs/2508.06982" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>&emsp;&emsp;
+              <div style="height: 10px;"></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-image">
           <img class="img-me" src="images/amt_demo.gif" alt="">
         </div>
         <div class="timeline-panel">
@@ -296,7 +374,7 @@
   </ul>
   </div>
   
-  <div class="content-wrapper__inner">
+  <div class="content-wrapper__inner" id="contributions">
     <h2>Contributions</h2>
     <ul class="timeline">
         <li class="timeline-inverted">
@@ -366,11 +444,8 @@
         </li>
     </ul>
     </div>
-</div>
-
-<div class="content-wrapper project">
-  <div class="content-wrapper__inner">
-    <h2>Co-authers</h2>
+  <div class="content-wrapper__inner" id="co-authors">
+    <h2>Co-authors</h2>
     <ul class="timeline">
         
       <li class="timeline-inverted">
@@ -513,13 +588,54 @@
     </footer>
     </div>
 </div>
-  
-
-
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/js/main.js?1680872785253620363"></script>
     <script type="text/javascript" src="/js/github_api.js?1680872785253620363"></script>
     
-  </body>
+  
+    <script type="text/javascript">
+    (function() {
+      // Tab click -> smooth scroll to section
+      $('.section-tabs .tab-btn').on('click', function() {
+        var target = $(this).data('target');
+        var $section = $('#' + target);
+        if ($section.length) {
+          var offset = $section.offset().top - 70;
+          $('html, body').animate({scrollTop: offset}, 400);
+        }
+      });
+
+      // Scroll -> highlight active tab
+      var sections = ['selected-pubs', 'contributions', 'co-authors'];
+      var $tabs = $('.section-tabs .tab-btn');
+      var isScrolling = false;
+
+      function updateActiveTab() {
+        var scrollPos = $(window).scrollTop() + 120;
+        var activeId = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          var $sec = $('#' + sections[i]);
+          if ($sec.length && $sec.offset().top <= scrollPos) {
+            activeId = sections[i];
+          }
+        }
+        $tabs.removeClass('active');
+        $tabs.filter('[data-target="' + activeId + '"]').addClass('active');
+      }
+
+      $(window).on('scroll', function() {
+        if (!isScrolling) {
+          window.requestAnimationFrame(function() {
+            updateActiveTab();
+            isScrolling = false;
+          });
+          isScrolling = true;
+        }
+      });
+
+      updateActiveTab();
+    })();
+    </script>
+</body>
 </html>
